@@ -286,7 +286,7 @@ void testSTL()
     // printf("test conversion 0x%x\n", *(unsigned short *)&a__); // expect 0x0
 
     // test dir reading
-    readDirectory(".");
+    // readDirectory(".");
 
     return;
 
@@ -690,12 +690,12 @@ void testSo()
 {
     std::string ld_path(getenv("LD_LIBRARY_PATH"));
     LOG("getenv:[%s]", ld_path.c_str());
-    ld_path.append("/usr/lib64/:");
+    ld_path.append("$(pwd):");
     setenv("LD_LIBRARY_PATH", ld_path.c_str(), 1);
 
     LOG("getenv: new env path[%s]", getenv("LD_LIBRARY_PATH"));
 
-    void* pHdl = ::dlopen("/home/y00210927/views/temp/debug/out/libmain.so", RTLD_LAZY | RTLD_LOCAL);
+    void* pHdl = ::dlopen("out/libmain.so", RTLD_LAZY | RTLD_LOCAL);
     if (pHdl != nullptr) {
         using func_ptr = void(*)();
         func_ptr pFunc = reinterpret_cast<func_ptr>(::dlsym(pHdl, "testSoSymbol"));
