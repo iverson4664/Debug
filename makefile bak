@@ -1,0 +1,35 @@
+out = out
+src = $(wildcard *.cpp)
+obj = $(patsubst %.cpp, $(out)/%.o, $(notdir $(src)))
+asmobj = $(patsubst %.cpp, $(out)/%.s, $(notdir $(src)))
+# obj = $(src:.cpp = .o)
+bin = $(out)/main
+cflags = -Wall -g -O3 -std=gnu++14
+lflags = -std=gnu++14 -lpthread
+inc = -I
+libs = -L
+
+all: $(out) $(bin)
+
+# $(obj): | $(out)
+$(out):
+	@mkdir -p $@
+
+$(bin): $(obj)
+	gcc -lstdc++ $(lflags) $^ -o $@ $(inc) $(libs)
+
+$(out)/%.o: %.cpp
+	gcc $(cflags) -c $< -o $@
+
+$(out)/%.s: %.cpp
+	gcc $(cflags) -S $< -o $@
+
+asm: $(out) $(asmobj) $(bin)
+
+.PHONEY:clean asm
+
+clean:
+	@rm -rfv $(out)
+
+
+# gcc -lstdc++ -g -O3 -std=c++11 main.o -o main

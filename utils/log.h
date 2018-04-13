@@ -1,8 +1,7 @@
 #ifndef __TEST_LOG__
 #define __TEST_LOG__
 
-#include <stdio.h>
-#include <stdarg.h>
+#include "system.h"
 
 void log(const char* fmt, ...);
 

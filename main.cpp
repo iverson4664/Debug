@@ -1,28 +1,9 @@
-#include <iostream>
-#include <vector>
-#include <ctime>
-#include <array>
-#include <memory>
-#include <initializer_list>
-#include <set>
-#include <map>
-#include <deque>
-#include <list>
-#include <unordered_map>
-#include <memory>
-#include <utility>
-#include <algorithm>
-#include <condition_variable>
-#include <thread>
+#include "system.h"
 
-#include <dlfcn.h> // load so
-#include <memory.h>
-#include <dirent.h>
-
-#include "utils/log.h"
-#include "utils/singleton.h"
-#include "utils/benchmark.h"
-#include "utils/tuple.h"
+#include "log.h"
+#include "singleton.h"
+#include "benchmark.h"
+#include "tuple.h"
 
 #include "pq/pq.h"
 
@@ -278,8 +259,7 @@ void readDirectory(const char* path) {
 
 void testSTL()
 {
-    LOG("enter");
-    LOG("__cplusplus version: %ld", __cplusplus); // 201103L
+    LOG("%s:enter", __FUNCTION__);
 
     // test conversion
     // unsigned int a__ = 0x11000000;
@@ -287,8 +267,6 @@ void testSTL()
 
     // test dir reading
     // readDirectory(".");
-
-    return;
 
     testString("test string...");
 
@@ -721,6 +699,7 @@ void testSoSymbol()
 int main()
 {
     LOG("....................................................");
+    LOG("__cplusplus version: %ld", __cplusplus); // 201103L
 
     test::testSo();
     test::testSTL();

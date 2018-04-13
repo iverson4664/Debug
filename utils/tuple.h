@@ -1,7 +1,7 @@
 #ifndef __TUPLE_EXAMPLE__
 #define __TUPLE_EXAMPLE__
 
-#include <tuple>
+#include "system.h"
 
 namespace test {
 

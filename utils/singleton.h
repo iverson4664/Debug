@@ -1,9 +1,7 @@
 #ifndef __TEST_SINGLETON__
 #define __TEST_SINGLETON__
 
-#include <memory>
-#include <mutex>
-#include <atomic>
+#include "system.h"
 
 namespace test {
 

@@ -1,9 +1,7 @@
 #ifndef __TEST_BENCHMARK__
 #define __TEST_BENCHMARK__
 
-#include <string>
-#include <chrono>
-
+#include "system.h"
 #include "log.h"
 
 namespace test {
